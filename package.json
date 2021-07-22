@@ -27,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/MRegirouard/Mrs.Patterson-Bot/issues"
   },
-  "homepage": "https://github.com/MRegirouard/Mrs.Patterson-Bot#readme"
+  "homepage": "https://github.com/MRegirouard/Mrs.Patterson-Bot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  }
 }
