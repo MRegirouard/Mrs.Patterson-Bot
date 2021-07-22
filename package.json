@@ -1,0 +1,31 @@
+{
+  "name": "mrs.patterson-bot",
+  "version": "1.0.0",
+  "description": "A Discord.js bot to update the AP Lit Discord server with posts and assignments from Google Classroom.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MRegirouard/Mrs.Patterson-Bot.git"
+  },
+  "keywords": [
+    "english",
+    "ap",
+    "class",
+    "literature",
+    "school",
+    "teacher",
+    "discord",
+    "bot",
+    "google",
+    "classroom"
+  ],
+  "author": "Ethan Girouard",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/MRegirouard/Mrs.Patterson-Bot/issues"
+  },
+  "homepage": "https://github.com/MRegirouard/Mrs.Patterson-Bot#readme"
+}
