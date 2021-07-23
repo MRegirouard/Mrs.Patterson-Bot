@@ -10,9 +10,9 @@ var config
 
 const commands = new SlashCommandInterface(bot)
 
-configReader.readOptions(configFile, configOptions, false).then((config) =>
+configReader.readOptions(configFile, configOptions, false).then((readConfig) =>
 {
-    config = config
+    config = readConfig
     console.info('[  OK  ] Succsfully read configuration file.')
 
     bot.login(config['Discord API Token']).then(() =>
