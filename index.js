@@ -29,8 +29,29 @@ configReader.readOptions(configFile, configOptions, false).then((config) =>
     process.exit(1)
 })
 
+function handlePing(interaction)
+{
+    commands.respondToInteraction(interaction, 'Pong!').catch((error) => console.error('[ FAIL ] Error responding to \"ping\" command:', error))
+}
+
 
 bot.on('ready', () =>
 {
     console.info('[  OK  ] Connected to Discord. Bot is ready.')
+
+    commands.listenForCommand('ping', (interaction) => handlePing(interaction))
+})
+
+bot.on('guildCreate', (guild) =>
+{
+    console.info('[  OK  ] Joined a new guild:', guild.name)
+
+    commands.postCommand({name: 'ping', description: 'Test connection.'}, guild.id).then((response) =>
+    {
+        console.debug('[  OK  ] \"ping\" command posted successfully.')
+    })
+    .catch((error) =>
+    {
+        console.error('[ FAIL ] Failed to post \"ping\" command in guild', guild.name,':', error)
+    })
 })
