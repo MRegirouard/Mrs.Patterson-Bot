@@ -25,3 +25,9 @@ configReader.readOptions(configFile, configOptions, false).then((config) =>
     console.error('[ FAIL ] Error reading configuration file:', error)
     process.exit(1)
 })
+
+
+bot.on('ready', () =>
+{
+    console.info('[  OK  ] Connected to Discord. Bot is ready.')
+})
