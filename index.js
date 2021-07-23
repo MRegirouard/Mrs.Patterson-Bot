@@ -1,11 +1,14 @@
 const configReader = require('./ConfigReader.js')
 const discord = require('discord.js')
+const SlashCommandInterface = require('./SlashCommands.js')
 
 const bot = new discord.Client()
 
 const configFile = './Config.json'
 const configOptions = {'Discord API Token':''}
 var config
+
+const commands = new SlashCommandInterface(bot)
 
 configReader.readOptions(configFile, configOptions, false).then((config) =>
 {
