@@ -170,13 +170,13 @@
      }
  
      /**
-      * Adds the command to the command listeners. When the slash command is used, the callback will be called.
-      * @param {string} name The name of the command to listen for.
+      * Adds one or more commands to the listeners. Uses the same callback for all commands specified.
+      * @param {string[]} names The name(s) of the command(s) to listen for.
       * @param {Function} callback The callback to call when the command is used.
       */
-     listenForCommand(name, callback)
+     listenForCommand(names, callback)
      {
-         if (name == null || name === '' || typeof name !== 'string')
+         if (names == null || names === '' || (typeof names !== 'string' && typeof names !== 'object'))
              throw new Error('No command name specified or name is not a string!')
          else if (callback == null || typeof callback !== 'function')
              throw new Error('No callback specified or callback is not a function!')
@@ -192,7 +192,13 @@
              })
          }
  
-         this._commandHandlers.push({name: name, callback: callback})
+         if (typeof names === 'string')
+             this._commandHandlers.push({name: names, callback: callback})
+         else
+         {
+             for (const newName of names)
+                 this._commandHandlers.push({name: newName, callback: callback})
+         }
      }
  
      /**
