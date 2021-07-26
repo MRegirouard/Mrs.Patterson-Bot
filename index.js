@@ -43,8 +43,10 @@ function sendWelcome(guild)
         if (systemChannel != null)
         {
             const canSend = systemChannel.permissionsFor(guild.me).has('SEND_MESSAGES')
+            const canView = systemChannel.permissionsFor(guild.me).has('VIEW_CHANNEL')
+            const canEmbed = systemChannel.permissionsFor(guild.me).has('EMBED_LINKS')
 
-            if (canSend)
+            if (canSend && canView && canEmbed)
             {
                 embed = new discord.MessageEmbed()
                     .setTitle('Hello, class!')
