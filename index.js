@@ -1,6 +1,7 @@
 const configReader = require('./ConfigReader.js')
 const discord = require('discord.js')
 const SlashCommandInterface = require('./SlashCommands.js')
+const fetch = require('node-fetch')
 
 const bot = new discord.Client()
 
