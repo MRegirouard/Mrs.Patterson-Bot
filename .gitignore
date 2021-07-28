@@ -105,3 +105,6 @@ dist
 
 # Configuration file:
 Config.json
+
+# Discord server SQL database:
+Servers.db
