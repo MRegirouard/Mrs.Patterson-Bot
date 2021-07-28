@@ -1,6 +1,7 @@
 const configReader = require('./ConfigReader.js')
 const discord = require('discord.js')
 const SlashCommandInterface = require('./SlashCommands.js')
+const sqlite3 = require('sqlite3').verbose()
 
 const bot = new discord.Client()
 
@@ -9,6 +10,10 @@ const configOptions = {'Discord API Token':''}
 var config
 
 const commands = new SlashCommandInterface(bot)
+
+const db = new sqlite3.Database('Servers.db')
+
+db.run('CREATE TABLE IF NOT EXISTS serverData (id INTEGER PRIMARY KEY AUTOINCREMENT, classChannel TEXT, lastWork TEXT, announceChannel TEXT, lastAnnounce TEXT)')
 
 configReader.readOptions(configFile, configOptions, false).then((readConfig) =>
 {
