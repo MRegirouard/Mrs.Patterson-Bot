@@ -13,7 +13,7 @@ const commands = new SlashCommandInterface(bot)
 
 const db = new sqlite3.Database('Servers.db')
 
-db.run('CREATE TABLE IF NOT EXISTS serverData (id INTEGER PRIMARY KEY AUTOINCREMENT, classChannel TEXT, lastWork TEXT, announceChannel TEXT, lastAnnounce TEXT)')
+db.run('CREATE TABLE IF NOT EXISTS serverData (serverId TEXT PRIMARY KEY, classChannel TEXT, lastWork TEXT, announceChannel TEXT, lastAnnounce TEXT)')
 
 configReader.readOptions(configFile, configOptions, false).then((readConfig) =>
 {
