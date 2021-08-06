@@ -1,4 +1,4 @@
-const configReader = require('./ConfigReader.js')
+const configReader = require('@eta357/config-reader')
 const discord = require('discord.js')
 const SlashCommandInterface = require('./SlashCommands.js')
 
