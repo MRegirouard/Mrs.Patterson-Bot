@@ -100,4 +100,36 @@ bot.on('guildCreate', (guild) =>
     {
         console.error('[ FAIL ] Error sending hello message to new gulid:', error)
     })
+
+    // Add the new server to the database
+
+    // Ensure the server isn't already in the database
+    db.all(`SELECT * FROM serverData WHERE serverId == ${guild.id}`, (err, rows) =>
+    {
+        if (err)
+        {
+            console.error('[ FAIL ] Error reading from database to determine if this server is new:', err)
+            console.warn('[ WARN ] The server will not be added to the database.')
+        }
+        else
+        {
+            if (rows.length !== 0)
+            {
+                console.warn(`[ WARN ] Server ${guild.name} is already in the database.`)
+                console.warn('[ WARN ] Server entry: ' + JSON.stringify(rows[0]))
+                console.warn('[ WARN ] Server will not be added. Existing entry will be preserved.')
+            }
+            else
+            {
+                // Insert the new server into the database with the guild id and no other data
+                db.run(`INSERT INTO serverData VALUES (\"${guild.id}\", \"\", \"\", \"\", \"\")`, function(err)
+                {
+                    if (err)
+                        console.error('[ FAIL ] Error adding server', guild.name, 'to database:', err)
+                    else
+                        console.info('[  OK  ] Server', guild.name, 'added to database.')
+                })
+            }
+        }
+    })
 })
